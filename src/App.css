@@ -27,7 +27,7 @@
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     width: 90%;
     margin: 5px;
     border-radius: 20px;
@@ -38,7 +38,7 @@
 .details_container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .basic{
@@ -132,10 +132,14 @@ h4, p {
 }
 
 p{
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .letter{
     font-weight: 800;
-    font-size: 1rem;
+    /* font-size: 1rem; */
+}
+
+.user{
+    font-size: small;
 }

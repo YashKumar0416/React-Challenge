@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "../App.css"
 
-const Accordion = ({greet, city, country, email, phone, address, designation, state, contact, desc}) => {
+const Accordion = ({id, name, username, email, street, suite, city, zipcode, phone, website, company}) => {
 
     //TO SHOW DETAILS OR NOT
     const [show, setShow] = useState(false);
@@ -14,18 +14,17 @@ const Accordion = ({greet, city, country, email, phone, address, designation, st
       <div className="basic">
         <div className="basic1">
 
-          <p className='basic_headings'>{greet}</p>
           <div className='basic_headings'>
-          <p className='heading letter'>CONTACT</p>
-          <p className='basic_headings'>{contact}</p>
+          <p className='heading letter'>NAME</p>
+          <p className='basic_headings'>{name}</p>
           </div>
           <div className='basic_headings'>
-          <p className='heading letter'>CITY</p>
-          <p className='basic_headings'>{city}</p>
+          <p className='heading letter'>COMPANY</p>
+          <p className='basic_headings'>{company}</p>
           </div>
           <div className='basic_headings'>
-          <p className='heading letter'>STATE</p>
-          <p className='basic_headings'>{state}</p>
+          <p className='heading letter'>WEBSITE</p>
+          <p className='basic_headings'>{website}</p>
           </div>
           <p onClick={()=> {setShow(!show)}} className="toggle_details">{show ?"Hide Details": "View Details"}</p>
         </div>
@@ -34,18 +33,18 @@ const Accordion = ({greet, city, country, email, phone, address, designation, st
           <div className="advanced">
             {show && <div className="alldetails">
               <div className="desc">
-                <p className='letter'>Description</p>
-                <p>{desc}</p>
+                <p className='letter'>Address</p>
+                <p>{suite} , {street} , {city} , {zipcode}</p>
               </div>
               <div className="other_details">
                 <div className="other_details_left">
                   <div className="items">
                   <p className='letter'>Contact Person</p>
-                  <p>{contact}</p>
+                  <p>{name}</p>
                   </div>
                   <div className="items">
-                  <p className='letter'>Designation</p>
-                  <p>{designation}</p>
+                  <p className='letter'>Username</p>
+                  <p>{username}</p>
                   </div>
                   <div className="items">
                   <p className='letter'>Email</p>
@@ -58,20 +57,20 @@ const Accordion = ({greet, city, country, email, phone, address, designation, st
                 </div>
                 <div className="other_details_right">
                   <div className="items">
-                  <p className='letter'>Address</p>
-                  <p>{address}</p>
+                  <p className='letter'>Company</p>
+                  <p>{company}</p>
+                  </div>
+                  <div className="items">
+                  <p className='letter'>Website</p>
+                  <p>{website}</p>
                   </div>
                   <div className="items">
                   <p className='letter'>City</p>
                   <p>{city}</p>
                   </div>
                   <div className="items">
-                  <p className='letter'>State</p>
-                  <p>{state}</p>
-                  </div>
-                  <div className="items">
-                  <p className='letter'>Country</p>
-                  <p>{country}</p>
+                  <p className='letter'>Zipcode</p>
+                  <p>{zipcode}</p>
                   </div>
                 </div>
               </div>

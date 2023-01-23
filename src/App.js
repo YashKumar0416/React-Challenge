@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./App.css";
 import Accordion from './Components/Accordion';
-import { appdata } from './Components/api';
 import Page from './Components/Page';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
@@ -15,22 +13,21 @@ const App = () => {
   const [postsPerPage, setPostsPerPage] = useState(3);
 
   //FETCH DATA FROM API
-  // useEffect(()=> {
-  //   const fetchdata = async ()=> {
-  //     setLoading(true);
-  //     const res = await axios.get('api');
-  //     setPosts(res.data);
-  //     setLoading(false);
-  //   };
+  useEffect(()=> {
+    const fetchdata = async ()=> {
+      setLoading(true);
+      const res = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setPosts(res.data);
+      setLoading(false);
+    };
 
-  //   fetchdata();
-  // }, []);
+    fetchdata();
+  }, []);
 
   //SET PAGES AND PAGINATION
   const lastPost = currentPage * postsPerPage;
   const firstPost = lastPost - postsPerPage;
-  // const currentPosts = posts.slice(firstPost, lastPost);
-  const currentPosts = appdata.slice(firstPost, lastPost);
+  const currentPosts = posts.slice(firstPost, lastPost);
   const setPage = (pageNumber)=> {setCurrentPage(pageNumber)};
 
   return (
@@ -40,9 +37,9 @@ const App = () => {
         <div className="main_box">
           {currentPosts.map((elem)=> {
             return <div className="inner"> 
-            <Accordion key={elem.id} country={elem.country} address={elem.address} phone={elem.phone} email={elem.email} designation={elem.designation} desc={elem.desc} greet={elem.greet} city={elem.city} state={elem.state} contact={elem.contact}/></div>
+            <Accordion key={elem.id} id={elem.id} name={elem.name} username={elem.username} email={elem.email} street={elem.address.street} suite={elem.address.suite} city={elem.address.city} zipcode={elem.address.zipcode} phone={elem.phone} company={elem.company.name} website={elem.website} /></div>
           })}
-        <Page postsPerPage={postsPerPage} totalPosts={appdata.length} setPage={setPage}/>
+        <Page postsPerPage={postsPerPage} totalPosts={posts.length} setPage={setPage}/>
         </div>
       </div>
 
